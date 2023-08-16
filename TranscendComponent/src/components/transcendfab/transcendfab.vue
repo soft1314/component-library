@@ -1,8 +1,8 @@
 <template>
-    <fab :position="position" :icon-size="iconSizes" :position-type="positionType" :bg-color="colors.hex"
-      :main-icon="mainIcon" :main-tooltip="mainTooltip"
-      :actions="[{name: 'alertMe1',icon: firstIcon, tooltip: firstTooltip, color:'#d11014'},{name: 'alertMe2',icon: secondIcon, tooltip: secondTooltip}]"
-      @alertMe1="alert1" @alertMe2="alert2" :fixed-tooltip="fixedTooltip" :enable-rotation="enableRotation"></fab>
+  <fab :position="position" :icon-size="iconSizes" :position-type="positionType" :bg-color="colors.hex"
+    :main-icon="mainIcon" :main-tooltip="mainTooltip"
+    :actions="[{name: 'alertMe1',icon: firstIcon, tooltip: firstTooltip, color:'#d11014'},{name: 'alertMe2',icon: secondIcon, tooltip: secondTooltip}]"
+    @alertMe1="alert1" @alertMe2="alert2" :fixed-tooltip="fixedTooltip" :enable-rotation="enableRotation"></fab>
 </template>
 
 <script>
@@ -66,21 +66,23 @@
         iconSizes: 'medium',
         colors: defaultProps,
         mainIcon: 'add',
-        mainTooltip: 'Hello',
-        firstIcon: 'cached',
-        firstTooltip: '第一个',
-        secondIcon: 'add_alert',
-        secondTooltip: '第二个',
+        mainTooltip: '',
+        firstIcon: 'category',
+        firstTooltip: '图层',
+        secondIcon: 'place',
+        secondTooltip: '定位',
         enableRotation: true
       }
     },
     methods: {
-        alert1(){
-            alert('You have clicked me :111111)');
-        },
-    	alert2(){
-    	    alert('You have clicked me :222222)');
-    	},
+      alert1() {
+        this.$parent.handleFabClick1()
+        this.$emit('handleFabClick1')
+      },
+      alert2() {
+        this.$parent.handleFabClick2()
+        this.$emit('handleFabClick2')
+      },
     }
   }
 </script>
